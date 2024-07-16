@@ -1,38 +1,274 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  transition: 0.2s, color 0s;
+}
+body {
+  background-color: rgb(15, 29, 37);
+  overflow-x: hidden;
+  color: white;
+  max-width: 100vw;
 }
 
-.App-logo {
-  height: 40vmin;
+.landing-image {
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  width: 100vw;
+  height: 110vh;
+  background-size: cover;
+  animation-timeline: view();
+  animation-name: scroller;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+  z-index: 1;
+  transition: background-image 0.5s ease-in-out;
+}
+.landing-image::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  top: 0px;
+  left:0px;
+  background: linear-gradient(
+    transparent,
+    transparent,
+    transparent,
+    transparent,
+    transparent,
+    rgb(15, 29, 37)
+  );
+}
+@keyframes scroller {
+  50% {
+    opacity: 0.8;
+    scale: 1;
+  }
+  100% {
+    opacity: 0.2;
+    scale: 1.2;
+  }
+}
+.landing-page {
+  height: 100vh;
+  position: relative;
+  z-index: 10000;
+}
+.navbar {
+  position: relative;
+  z-index: 1000000;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.navbar > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+.navbar .links .link {
+  display: flex;
+  position: relative;
+}
+.navbar .links .link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: red;
+  transition: 0.29s;
+  transform: translate(-50%);
+}
+.navbar .links .link:hover::after {
+  width: 100%;
+}
+.navbar .logo {
+  display: flex;
+  font-size: 1.4em;
+  justify-content: center;
+  font-weight: 900;
+}
+.landing-content {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.line {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.7em;
+  color: yellow;
+}
+.line div {
+  height: 1px;
+  width: 40px;
+  background-color: yellow;
+}
+.landing-content h2 {
+  font-size: 2em;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+.landing-content h6 {
+  margin-top: 10px;
+}
+.blog {
+  position: relative;
+  z-index: 10000000000000;
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 50px;
+  padding-left: 90px;
+  padding-right: 70px;
+  margin-bottom: 40px;
+  /* align-items: center; */
+  gap: 60px;
+  max-width: 1000px;
+  left: 50%;
+  transform: translate(-50%);
+}
+@media (max-width: 601px) {
+  .blog {
+    display: block;
+    align-items: center;
+  }
+  .blog .image.home {
+    position: relative;
+    margin-top: 40px;
+    text-align: center;
+    max-width: 250px;
+    left:50%;
+    transform: translate(-50%);
+  }
+  .blog .image.blog img {
+    position: relative;
+    left:50%;
+    transform: translate(-50%);
+  }
+}
+.blog div {
+  /* flex:1 */
+}
+.blog .text {
+  /* position: relative; */
+  padding-top: 0em;
+  /* background-color: firebrick; */
+}
+.blog .text .number {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: absolute;
+  font-size: 5em;
+  top: 0em;
+  /* left: 40px; */
+  margin-left: -40px;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  opacity: 0.2;
+  user-select: none;
+  z-index: -1;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.blog .text .title {
+  margin-top: 6px;
+  font-size: 1.6em;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.blog .text .content {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 0.8em;
+}
+.blog .text .more {
+  position: relative;
+  text-decoration: none;
+  color: yellow;
+  font-size: 0.8em;
+}
+.blog .image {
+  position: relative;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+}
+.blog .image img {
+  transition: 0.2s;
+  opacity: 0.8;
+  width: 250px;
+}
+.blog .image {
+  /* position: relative; */
+}
+.blog .image.blog img {
+  opacity: 1;
+  z-index: 1000;
+}
+.blog .image img:hover {
+  opacity: 1;
+}
+.blog .image:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: calc(100% + 40px);
+  width: calc(100% + 40px);
+  background-color: white;
+  border-radius: 10px;
+  z-index: -2;
+  /* pointer-events: none; */
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.blog .image:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: calc(100% + 20px);
+  width: calc(100% + 20px);
+  background-color: rgb(15, 29, 37);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s;
+  /* pointer-events: none; */
+}
+.blog .image.home:hover:after,
+.blog .image.home:hover:before {
+  opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.blog-content {
+  position: relative;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%);
+  margin-bottom: 80px;
+  margin-top: -100px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.blog-content h1 {
+  margin-bottom: 20px;
 }
